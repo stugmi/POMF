@@ -3,6 +3,11 @@
 '''
 Originaly made by jirx, modified for pomf.se 
 
+** You need to install 
+* python2-requests
+* python2-notify
+* xclip
+
 '''
 
 
