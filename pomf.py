@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
 '''
-Originaly made by jirx, modified for pomf.se 
+Originally made by Jirx, modified for pomf.se 
 
 ** You need to install 
 * python2-requests
