@@ -7,6 +7,7 @@ Originally made by Jirx, modified for pomf.se
 * python2-requests
 * python2-notify
 * xclip
+* scrot
 
 '''
 
