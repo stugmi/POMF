@@ -76,7 +76,7 @@ def Usage():
     print "  -f, --file \tUploads a file to pomf.se"
     print "  -i, --image \tUploads a image using scrot --select and uploads the image to pomf.se"
     print "\n Example:\n\t pomf -f pomf.flac"
-    print " \t Uploads a file to pomf.se notifies you once it's done and the link is saved to your clipboard.\n"
+    print " \t Uploads a file via scrot --select and notifies you once it's done.\n"
     exit()	
 
 if len(argv) == 1:
