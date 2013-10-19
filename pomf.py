@@ -79,6 +79,9 @@ def Usage():
     print " \t Uploads a file to pomf.se notifies you once it's done and the link is saved to your clipboard.\n"
     exit()	
 
+if len(argv) == 1:
+	Usage()
+
 try:
 	opts, args = getopt.getopt(argv[1:], "hif", ["help", "image","file="])
 except getopt.GetoptError, err:
