@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
 '''
-Originally made by Jirx, modified for pomf.se by fuzzy
+Image upload is originally done by Jirx
 
 ** You need to install 
 * python2-requests
