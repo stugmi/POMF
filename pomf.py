@@ -8,7 +8,7 @@ Image upload is originally done by Jirx
 * python2-notify
 * xclip
 * scrot
-
+# It makes a directory in your home folder called screenshots and saves screenshots there.
 '''
 
 
