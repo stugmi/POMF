@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
 '''
-Image upload is originally done by Jirx
+Modified version of Jirx's script.
 
 ** You need to install 
 * python2-requests
