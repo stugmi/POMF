@@ -51,7 +51,7 @@ def main():
 		exit()
 
 	response = response.text.split('"')
-	response_text = response[9]
+	response_text = response[17]
 
 	notify(image_directory + response_text)
 	clipboard(image_directory + response_text)
