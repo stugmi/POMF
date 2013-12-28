@@ -1,15 +1,12 @@
-#!/usr/bin/env python2
+#!/usr/bin/python2
 
-'''
-Modified version of Jirx's script.
-
-** You need to install 
-* python2-requests
-* python2-notify
-* xclip
-* scrot
-# It makes a directory in your home folder called screenshots and saves screenshots there.
-'''
+###Originally made by Jirx, modified for pomf.se by fuzzy
+#** You need to install 
+#* python2-requests
+#* python2-notify
+#* xclip
+#* scrot
+###
 
 
 try:
@@ -27,31 +24,38 @@ from sys import argv
 import getopt
 
 ### Edit ###
-screenshot_dir = os.getenv("HOME") + os.path.sep + "screenshots" + os.path.sep
+screenshot_dir = "/tmp/"
 image_directory = "http://a.pomf.se/"
 upload_script = "http://pomf.se/upload.php"
 ############
 
 def main():
-	try:
-		if not os.path.exists(screenshot_dir):
-			os.makedirs(screenshot_dir)
+	if image_upload == True:
+		file_upload = "{0}{1}.png".format(screenshot_dir, int(time.time()))
+		p = subprocess.Popen(["scrot", "--select", file_upload])
+		p.wait()
 
-	except Exception as e:
-		notify("Error creating directory {0}, {1}".format(screenshot_dir), e)
-		exit()
 
 	try:
-		response = requests.post(
-			url=upload_script,
-			files={"files[]":open(file_upload, "r")}
-		)
+	    if not os.path.exists(screenshot_dir):
+		os.makedirs(screenshot_dir)
+
 	except Exception as e:
-		notify("Error uploading {0}".format(e))
-		exit()
+	    notify("Error creating directory {0}, {1}".format(screenshot_dir), e)
+	    exit()
+
+	try:
+	    response = requests.post(
+                url=upload_script,
+		files={"files[]":open(file_upload, "r")}
+	        )
+	except Exception as e:
+	    notify("Error uploading {0}".format(e))
+	    exit()
 
 	response = response.text.split('"')
 	response_text = response[17]
+	print response_text
 
 	notify(image_directory + response_text)
 	clipboard(image_directory + response_text)
@@ -77,7 +81,7 @@ def Usage():
     print "  -i, --image \tUploads a image using scrot --select and uploads the image to pomf.se"
     print "\n Example:\n\t pomf -f pomf.flac"
     print " \t Uploads a file via scrot --select and notifies you once it's done.\n"
-    exit()	
+    exit()
 
 if len(argv) == 1:
 	Usage()
@@ -92,9 +96,7 @@ for o, a in opts:
 	if o in ("-h","--help"):
 		Usage()
 	elif o in ("-i","--image"):
-		file_upload = "{0}{1}.png".format(screenshot_dir, int(time.time()))
-		p = subprocess.Popen(["scrot", "--select", file_upload])
-		p.wait()
+		image_upload = True
 	elif o in ("-f","--file"):
 		file_upload = argv[2]
 	else:
