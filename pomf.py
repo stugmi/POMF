@@ -50,8 +50,8 @@ def main():
 		files={"files[]":open(file_upload, "r")}
 	        )
 	except Exception as e:
-	    notify("Error uploading {0}".format(e))
-	    exit()
+	    print("Error uploading {0}".format(e))
+	    main()
 
 	response = response.text.split('"')
 	response_text = response[17]
