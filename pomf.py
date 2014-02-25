@@ -1,6 +1,6 @@
 #!/usr/bin/python2
 
-###Originally made by Jirx, modified for pomf.se by fuzzy
+###
 #** You need to install 
 #* python2-requests
 #* python2-notify
@@ -24,9 +24,15 @@ from sys import argv
 import getopt
 
 ### Edit ###
+
+#Paths
 screenshot_dir = "/tmp/"
 image_directory = "http://a.pomf.se/"
 upload_script = "http://pomf.se/upload.php"
+
+#Configs
+notifyme = True
+
 ############
 
 def main():
@@ -55,9 +61,9 @@ def main():
 
 	response = response.text.split('"')
 	response_text = response[17]
-	print response_text
 
-	notify(image_directory + response_text)
+        if notifyme = True:
+        	notify(image_directory + response_text)
 	clipboard(image_directory + response_text)
 	print image_directory + response_text
 
