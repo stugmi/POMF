@@ -25,10 +25,20 @@ import getopt
 
 ### Edit ###
 
+#Api for goatshot / pomf.cat 
+api = ""
+
+
 #Paths
 screenshot_dir = "/tmp/"
-image_directory = "http://a.pomf.se/"
-upload_script = "http://pomf.se/upload.php"
+
+#pomf.se
+#image_directory = "http://a.pomf.se/"
+#upload_script = "http://pomf.se/upload.php"
+
+#goatshot / pomf.cat
+image_directory = "http://i.pomf.cat" #More to come
+upload_script = "http://pomf.se/upload.php?apikey={}".format(api)
 
 #Configs
 notifyme = True
