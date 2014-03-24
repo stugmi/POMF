@@ -38,7 +38,7 @@ screenshot_dir = "/tmp/"
 
 #goatshot / pomf.cat
 image_directory = "http://i.pomf.cat" #More to come
-upload_script = "http://pomf.cat/upload.php?apikey={}".format(api)
+upload_script = "http://s.pomf.cat/upload.php?apikey={}".format(api)
 
 #Configs
 notifyme = True
