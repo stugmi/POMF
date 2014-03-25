@@ -43,16 +43,16 @@ goatshot = True
 
 
 #Domains to use for GoatShot.
-Domains = ["i.pomf.cat/", 	#1
-"i.lulzsec.com/", 	  	#2
-"i.am.sabu.at.lulzsec.com/",	#3
-"i.maiwaif.us/",		#4
-"i.getrekd.pw/",		#5
-"i.fukinfite.me/",]		#6
+Domains = ["i.pomf.cat/", 	#0
+"i.lulzsec.com/", 	  	#1
+"i.am.sabu.at.lulzsec.com/",	#2
+"i.maiwaif.us/",		#3
+"i.getrekd.pw/",		#4
+"i.fukinfite.me/",]		#5
 
 #Change domain you want to use based on the numbers.
 if goatshot == True:
-	Domains[1] = image_directory
+	image_directory = Domains[0]
 
 ############
 
