@@ -1,11 +1,12 @@
 #!/usr/bin/python2
 
 ###
-#** You need to install 
+#** Requirements
 #* python2-requests
 #* python2-notify
 #* xclip
 #* scrot
+#* Some sort of desktop notifications ( https://wiki.archlinux.org/index.php/Desktop_notifications#Notification servers )
 #
 #### What is the goatshot feature?
 # The goatshot feature is a new image capturing serivce I'm playing with.
@@ -32,13 +33,26 @@ import getopt
 #Api for goatshot / pomf.cat 
 api = "Dix"
 
-
 #Paths
 screenshot_dir = "/tmp/"
 
 #Configs
 notifyme = True
 goatshot = True
+
+
+
+#Domains to use for GoatShot.
+Domains = ["i.pomf.cat/", 	#1
+"i.lulzsec.com/", 	  	#2
+"i.am.sabu.at.lulzsec.com/",	#3
+"i.maiwaif.us/",		#4
+"i.getrekd.pw/",		#5
+"i.fukinfite.me/",]		#6
+
+#Change domain you want to use based on the numbers.
+if goatshot == True:
+	Domains[1] = image_directory
 
 ############
 
@@ -112,7 +126,6 @@ if goatshot != True:
 	upload_script = "http://pomf.se/upload.php"
 
 if goatshot == True:
-	image_directory = "http://i.pomf.cat/" #More to come
 	upload_script = "http://s.pomf.cat/upload.php?apikey={}".format(api)
 
 	if api == "":
