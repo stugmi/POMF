@@ -6,6 +6,10 @@
 #* python2-notify
 #* xclip
 #* scrot
+#
+#### What is the goatshot feature?
+# The goatshot feature is a new image capturing serivce I'm playing with.
+# Feel free to sign up on https://s.pomf.cat
 ###
 
 
@@ -26,19 +30,11 @@ import getopt
 ### Edit ###
 
 #Api for goatshot / pomf.cat 
-api = ""
+api = "Dix"
 
 
 #Paths
 screenshot_dir = "/tmp/"
-
-#pomf.se
-#image_directory = "http://a.pomf.se/"
-#upload_script = "http://pomf.se/upload.php"
-
-#goatshot / pomf.cat
-image_directory = "http://i.pomf.cat" #More to come
-upload_script = "http://s.pomf.cat/upload.php?apikey={}".format(api)
 
 #Configs
 notifyme = True
@@ -71,7 +67,11 @@ def main():
 	    main()
 	
 	if goatshot == True:
-		response_text = response
+		response_text = response.text
+
+		if response_text == "U bad":
+			exit(notify("Either you put an invalid api key or something stopid happend, try checking if your api key is valid."))
+
 	else:
 	    response = response.text.split('"')
 	    response_text = response[17]
@@ -106,6 +106,17 @@ def Usage():
 
 if len(argv) == 1:
 	Usage()
+
+if goatshot != True:
+	image_directory = "http://a.pomf.se/"
+	upload_script = "http://pomf.se/upload.php"
+
+if goatshot == True:
+	image_directory = "http://i.pomf.cat/" #More to come
+	upload_script = "http://s.pomf.cat/upload.php?apikey={}".format(api)
+
+	if api == "":
+		exit(notify("Please get your api key from http://s.pomf.cat"))
 
 try:
 	opts, args = getopt.getopt(argv[1:], "hif", ["help", "image","file="])
