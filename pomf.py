@@ -42,6 +42,7 @@ upload_script = "http://s.pomf.cat/upload.php?apikey={}".format(api)
 
 #Configs
 notifyme = True
+goatshot = True
 
 ############
 
@@ -68,11 +69,15 @@ def main():
 	except Exception as e:
 	    print("Error uploading {0}".format(e))
 	    main()
+	
+	if goatshot == True:
+		response_text = response
+	else:
+	    response = response.text.split('"')
+	    response_text = response[17]
+	 	
 
-	response = response.text.split('"')
-	response_text = response[17]
-
-        if notifyme = True:
+        if notifyme == True:
         	notify(image_directory + response_text)
 	clipboard(image_directory + response_text)
 	print image_directory + response_text
