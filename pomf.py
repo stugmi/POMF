@@ -31,28 +31,28 @@ import getopt
 ### Edit ###
 
 #Api for goatshot / pomf.cat 
-api = "Dix"
+api = "Get you api at https://s.pomf.cat/panel/"
 
 #Paths
 screenshot_dir = "/tmp/"
 
 #Configs
-notifyme = True
-goatshot = True
-
+notifyme  = True
+goatshot  = True
+image_upload = ""
 
 
 #Domains to use for GoatShot.
 Domains = ["http://i.pomf.cat/", 	#0
 "http://i.lulzsec.com/", 	  	#1
 "http://i.am.sabu.at.lulzsec.com/",	#2
-"http://i.maiwaif.us/",		#3
-"http://i.getrekd.pw/",		#4
+"http://i.maiwaif.us/",			#3
+"http://i.getrekd.pw/",			#4
 "http://i.fukinfite.me/",]		#5
 
 #Change domain you want to use based on the numbers.
 if goatshot == True:
-	image_directory = Domains[0]
+	image_directory = Domains[3]
 
 ############
 
@@ -61,7 +61,9 @@ def main():
 		file_upload = "{0}{1}.png".format(screenshot_dir, int(time.time()))
 		p = subprocess.Popen(["scrot", "--select", file_upload])
 		p.wait()
-
+    
+        elif file_uploading == True:
+            file_upload = argv[2]
 
 	try:
 	    if not os.path.exists(screenshot_dir):
@@ -74,7 +76,7 @@ def main():
 	try:
 	    response = requests.post(
                 url=upload_script,
-		files={"files[]":open(file_upload, "r")}
+		files={"files[]":open(file_upload, "rb")}
 	        )
 	except Exception as e:
 	    print("Error uploading {0}".format(e))
@@ -143,10 +145,10 @@ for o, a in opts:
 	elif o in ("-i","--image"):
 		image_upload = True
 	elif o in ("-f","--file"):
-		file_upload = argv[2]
+		file_uploading = True
 	else:
 		Usage()
 
 
 if __name__ == "__main__":
-   main()
+    main()
