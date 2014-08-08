@@ -80,7 +80,7 @@ def main():
 	        )
 	except Exception as e:
 	    print("Error uploading {0}".format(e))
-	    main()
+	    exit()
 	
 	if goatshot == True:
 		response_text = response.text
