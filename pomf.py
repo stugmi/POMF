@@ -38,7 +38,7 @@ screenshot_dir = "/tmp/"
 
 #Configs
 notifyme  = True
-goatshot  = True
+goatshot  = False
 image_upload = ""
 
 
